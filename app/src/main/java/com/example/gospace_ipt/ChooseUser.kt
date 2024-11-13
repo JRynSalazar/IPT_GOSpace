@@ -9,21 +9,22 @@ import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.gospace_ipt.databinding.ActivityMainBinding
+import com.example.gospace_ipt.databinding.ActivityChooseUserBinding
 
 
-class MainActivity : AppCompatActivity() {
+
+class ChooseUser : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityChooseUserBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_choose_user)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityChooseUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 //--------------------------IMG GIF----------------------------------
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 //-------------------------------------------------------------------
 
 //-----------------------ONBOARDING appearing only once-------------------
+
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val isFirstRun = sharedPreferences.getBoolean("isFirstRun", false)
 
@@ -53,10 +55,8 @@ class MainActivity : AppCompatActivity() {
         }
 //-----------------------------------------------------------------------
 
-
-
-
 //------------------Navigation section----------------------------------
+
         binding.toAdminLogin.setOnClickListener {
             val toReg = Intent(this, AdminSignUp::class.java)
             startActivity(toReg)

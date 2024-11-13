@@ -13,6 +13,15 @@
         android:theme="@style/Theme.GoSpace_IPT"
         tools:targetApi="31">
         <activity
+            android:name=".GSOViewPage"
+            android:exported="false" />
+        <activity
+            android:name=".MainViewpage"
+            android:exported="false" />
+        <activity
+            android:name=".ChooseAdmin"
+            android:exported="false" />
+        <activity
             android:name=".User_Login"
             android:exported="false" />
         <activity
@@ -25,7 +34,7 @@
             android:name=".Onboarding"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ChooseUser"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

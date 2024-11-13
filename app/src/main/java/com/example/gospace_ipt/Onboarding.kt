@@ -39,7 +39,7 @@ class Onboarding : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.button).setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, ChooseUser::class.java))
             finish()
         }
     }
