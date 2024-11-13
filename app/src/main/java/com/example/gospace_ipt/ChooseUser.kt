@@ -62,7 +62,7 @@ class ChooseUser : AppCompatActivity() {
             startActivity(toReg)
         }
         binding.toUserLogin.setOnClickListener {
-            val toReg = Intent(this, User_Login::class.java)
+            val toReg = Intent(this, UserLogin::class.java)
             startActivity(toReg)
         }
 //------------------------------------------------------------------------
