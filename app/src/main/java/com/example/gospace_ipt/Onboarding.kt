@@ -9,19 +9,20 @@ import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.gospace_ipt.databinding.ActivityMainBinding
 
-class Onboarding : AppCompatActivity() {
+import com.example.gospace_ipt.databinding.ActivityOnboarding1Binding
 
-    private lateinit var binding: ActivityMainBinding
+class ActivityOnboarding : AppCompatActivity() {
+
+    private lateinit var binding: ActivityOnboarding1Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_onboarding)
+        setContentView(R.layout.activity_onboarding1)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityOnboarding1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
 //----------------------------IMG GIF ------------------------------

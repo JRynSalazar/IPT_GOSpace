@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.gms.google.services)
     id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -49,6 +51,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation("androidx.room:room-runtime:2.5.0")
+    implementation(libs.firebase.auth)
     ksp("androidx.room:room-compiler:2.5.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     ksp("com.github.bumptech.glide:compiler:4.16.0")
