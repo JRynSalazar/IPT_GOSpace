@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation("androidx.room:room-runtime:2.5.0")
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
     ksp("androidx.room:room-compiler:2.5.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     ksp("com.github.bumptech.glide:compiler:4.16.0")

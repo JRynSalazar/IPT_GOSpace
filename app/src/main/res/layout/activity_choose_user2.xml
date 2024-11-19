@@ -8,19 +8,6 @@
     android:background="@drawable/onboard_bg"
     tools:context=".ChooseUser">
 
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/back"
-        android:layout_marginTop="25sp"
-        android:layout_marginStart="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -67,16 +54,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_admin_login" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:indeterminate="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <FrameLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/animatedProgressBar"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop" />
+</FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

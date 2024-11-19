@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 
 
-class AdRoomFragment : Fragment() {
+class AdUserListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ad_room, container, false)
+        return inflater.inflate(R.layout.fragment_aduser_list, container, false)
     }
 
 }

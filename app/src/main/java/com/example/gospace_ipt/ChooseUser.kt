@@ -5,37 +5,56 @@ import android.content.SharedPreferences
 import android.graphics.drawable.AnimatedImageDrawable
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.example.gospace_ipt.databinding.ActivityChooseUser2Binding
-
-
+import com.google.firebase.database.FirebaseDatabase
 
 
 class ChooseUser : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var binding: ActivityChooseUser2Binding
-    private lateinit var progressBar: ProgressBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                )
 
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+
+
+        val testDatabase = FirebaseDatabase.getInstance().getReference("test")
+        testDatabase.setValue("Hello Firebase!")
+            .addOnSuccessListener {
+                Log.d("Firebase", "Data written successfully!")
+            }
+            .addOnFailureListener {
+                Log.e("Firebase", "Error writing data", it)
+            }
 
 
         binding = ActivityChooseUser2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        progressBar = findViewById(R.id.progressBar)
+        // -----Loading-----------
+        val progressBar = findViewById<ImageView>(R.id.animatedProgressBar)
+        Glide.with(this)
+            .asGif()
+            .load(R.drawable.ic_loading)
+            .into(progressBar)
 
 //--------------------------IMG GIF----------------------------------
         val imageView: ImageView = binding.mygif
@@ -68,26 +87,24 @@ class ChooseUser : AppCompatActivity() {
 //------------------Navigation section----------------------------------
 
         binding.toAdminLogin.setOnClickListener {
-            showLoading()
+            showProgressBar()
             val toReg = Intent(this, AdminSignUp::class.java)
             startActivity(toReg)
-            hideLoading()
+            hideProgressBar()
         }
         binding.toUserLogin.setOnClickListener {
-            showLoading()
+            showProgressBar()
             val toReg = Intent(this, UserLogin::class.java)
             startActivity(toReg)
-            hideLoading()
+            hideProgressBar()
         }
 //------------------------------------------------------------------------
     }
-    private fun showLoading() {
-        progressBar.visibility = View.VISIBLE
+    private fun showProgressBar() {
+        findViewById<View>(R.id.progressContainer)?.visibility = View.VISIBLE
     }
 
-    private fun hideLoading() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            progressBar.visibility = View.GONE
-        }, 500)
+    private fun hideProgressBar() {
+        findViewById<View>(R.id.progressContainer)?.visibility = View.GONE
     }
 }
