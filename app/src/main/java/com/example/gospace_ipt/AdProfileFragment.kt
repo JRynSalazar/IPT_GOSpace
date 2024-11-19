@@ -3,6 +3,7 @@ package com.example.gospace_ipt
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,7 @@ class AdProfileFragment : Fragment() {
     private lateinit var binding: FragmentAdProfileBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private lateinit var databaseRoom: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,7 @@ class AdProfileFragment : Fragment() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("users")
+        databaseRoom = FirebaseDatabase.getInstance().getReference("rooms")
 
         binding.addRoom1.setOnClickListener {
             showPopup(it)
@@ -138,26 +141,40 @@ class AdProfileFragment : Fragment() {
     private fun showPopup(anchorView: View) {
         val popupBinding = PopupAddRoomBinding.inflate(LayoutInflater.from(requireContext()))
         val popupView = popupBinding.root
-
-
         val popupWindow = PopupWindow(
             popupView,
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT,
             true
         )
-
         popupWindow.setBackgroundDrawable(requireContext().getDrawable(R.drawable.popup_background))
 
         popupBinding.cancelBTN.setOnClickListener {
             popupWindow.dismiss()
         }
 
+        popupBinding.addRoomBTN.setOnClickListener {
+            val roomName = popupBinding.username.text.toString()
+            if (roomName.isNotEmpty()) {
+                val room = RoomList(roomName = roomName)
+                val roomId = databaseRoom.push().key
+                if (roomId != null) {
+                    databaseRoom.child(roomId).setValue(room)
+                        .addOnSuccessListener {
+                            Toast.makeText(requireContext(), "Room added successfully", Toast.LENGTH_SHORT).show()
+                            popupWindow.dismiss()
+                        }
+                        .addOnFailureListener { exception ->
+                            Toast.makeText(requireContext(), "Error: ${exception.message}", Toast.LENGTH_SHORT).show()
+                        }
+                }
+            } else {
+                Toast.makeText(requireContext(), "Room name cannot be empty", Toast.LENGTH_SHORT).show()
+            }
+        }
         popupWindow.isOutsideTouchable = true
-
-        popupWindow.showAsDropDown(anchorView)
+        popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0, 0)
     }
-
 
 }
 

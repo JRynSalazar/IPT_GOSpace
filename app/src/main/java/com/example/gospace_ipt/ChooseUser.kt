@@ -35,17 +35,6 @@ class ChooseUser : AppCompatActivity() {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
-
-        val testDatabase = FirebaseDatabase.getInstance().getReference("test")
-        testDatabase.setValue("Hello Firebase!")
-            .addOnSuccessListener {
-                Log.d("Firebase", "Data written successfully!")
-            }
-            .addOnFailureListener {
-                Log.e("Firebase", "Error writing data", it)
-            }
-
-
         binding = ActivityChooseUser2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
