@@ -157,7 +157,7 @@ class AdProfileFragment : Fragment() {
             val roomName = popupBinding.username.text.toString()
             if (roomName.isNotEmpty()) {
                 val room = RoomList(roomName = roomName)
-                val roomId = databaseRoom.push().key
+                val roomId = roomName
                 if (roomId != null) {
                     databaseRoom.child(roomId).setValue(room)
                         .addOnSuccessListener {

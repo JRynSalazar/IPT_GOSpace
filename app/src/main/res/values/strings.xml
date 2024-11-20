@@ -44,6 +44,14 @@
     <string name="room_name">Room Name</string>
     <string name="logout">Logout</string>
     <string name="background">Background</string>
+    <string name="aces_logo">ACES Logo</string>
+    <string name="request_room">Request Room</string>
+    <string name="message">Message</string>
+    <string name="set_time_schedule">Set Time Schedule</string>
+    <string name="scheduled_time_none">Scheduled Time: None</string>
+    <string name="scheduled_by">Scheduled By:</string>
+    <string name="status">Status</string>
+    <string name="type_your_message_here">Type your Message here</string>
     <string-array name="role_options">
         <item>Admin Root</item>
         <item>GSO</item>
