@@ -16,9 +16,12 @@
         android:theme="@style/Theme.GoSpace_IPT"
         tools:targetApi="31">
         <activity
+            android:name=".AddUserAccnt"
+            android:exported="false" />
+        <activity
             android:name=".AddRoomAdmin"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AdminAccntSettings"
             android:exported="false"

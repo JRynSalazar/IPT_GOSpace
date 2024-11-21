@@ -56,6 +56,11 @@ class AdProfileFragment : Fragment() {
 
         fetchUserData()
 
+        binding.addUser.setOnClickListener{
+            val toAddUser = Intent(requireActivity(), AddUserAccnt::class.java)
+            startActivity(toAddUser)
+        }
+
         binding.logOut.setOnClickListener {
             showProgressBar()
             logoutNotif()
@@ -64,6 +69,10 @@ class AdProfileFragment : Fragment() {
         binding.accSettings.setOnClickListener {
             val toAccntSetting = Intent(requireActivity(), AdminAccntSettings::class.java)
             startActivity(toAccntSetting)
+        }
+
+        binding.upload.setOnClickListener {
+
         }
     }
 

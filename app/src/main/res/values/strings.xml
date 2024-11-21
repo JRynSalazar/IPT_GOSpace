@@ -52,6 +52,7 @@
     <string name="scheduled_by">Scheduled By:</string>
     <string name="status">Status</string>
     <string name="type_your_message_here">Type your Message here</string>
+    <string name="add_user">Add User</string>
     <string-array name="role_options">
         <item>Admin Root</item>
         <item>GSO</item>

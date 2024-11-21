@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/background">
+        <shape>
+            <solid android:color="#CCCCCC" />
+            <corners android:radius="25dp"/>
+            <size android:width="100dp" android:height="100dp"/>
+        </shape>
+    </item>
+
+    <item android:id="@+id/progress">
+        <rotate
+            android:drawable="@drawable/progress_loading"
+        android:fromDegrees="0"
+        android:toDegrees="360"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="800"
+        android:repeatCount="infinite" />
+    </item>
+</layer-list>

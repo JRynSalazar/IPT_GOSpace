@@ -40,7 +40,7 @@ android {
         viewBinding = true
     }
 
-    buildToolsVersion = "35.0.0"
+
 }
 
 dependencies {
@@ -53,6 +53,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.5.0")
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
     ksp("androidx.room:room-compiler:2.5.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     ksp("com.github.bumptech.glide:compiler:4.16.0")
