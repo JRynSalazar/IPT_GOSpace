@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="25dp"
     app:cardElevation="8dp"
-    app:cardUseCompatPadding="true">
+    android:layout_marginTop="10dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,8 +14,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView5"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_margin="5dp"
             app:cardCornerRadius="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
+                android:background="@android:color/transparent"
                 android:src="@drawable/profileicon" />
         </androidx.cardview.widget.CardView>
 
@@ -35,10 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="Name"
+            android:text="@string/name"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/role"
             app:layout_constraintStart_toEndOf="@+id/cardView5"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,14 +51,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Role"
-            android:textSize="18sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/cardView5"
             app:layout_constraintStart_toEndOf="@+id/cardView5"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
+             />
 
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/delete"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_margin="15dp"
             android:contentDescription="@string/trash"
             android:scaleType="fitXY"

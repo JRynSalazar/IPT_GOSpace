@@ -26,6 +26,7 @@
         android:layout_marginEnd="25dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +70,7 @@
                     android:drawableStart="@drawable/profileicon1"
                     android:drawablePadding="12dp"
                     android:hint="@string/email"
-                    android:inputType="text" />
+                    android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,6 +81,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
+                app:endIconTint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/admin_user"
@@ -101,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/don_t_have_account_yet"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/admin_pass"
                 app:layout_constraintTop_toBottomOf="@+id/admin_pass" />
@@ -112,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/register"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#7752FE"
                 app:layout_constraintEnd_toEndOf="@+id/admin_pass"
@@ -168,18 +170,20 @@
         tools:ignore="ContentDescription" />
 
 
-    <ProgressBar
-        android:id="@+id/rotatingProgressBar"
-        style="@android:style/Widget.ProgressBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:indeterminate="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <FrameLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/animatedProgressBar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop" />
+    </FrameLayout>
 
 
 

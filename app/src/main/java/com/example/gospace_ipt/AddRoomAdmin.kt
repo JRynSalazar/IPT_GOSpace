@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.text.Editable
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gospace_ipt.databinding.ActivityAddroomAdminBinding
@@ -26,21 +27,29 @@ class AddRoomAdmin : AppCompatActivity() {
         binding = ActivityAddroomAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        database1 = database.getReference("users") // Initialize database reference for users
+        database1 = database.getReference("users")
 
-        // Back button functionality
         binding.back.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
         val roomName = intent.getStringExtra("room_name")
         val status = intent.getStringExtra("status")
+        val borrower = intent.getStringExtra("borrower")
+        val role = intent.getStringExtra("role")
+        val schedule = intent.getStringExtra("schedule")
+        val message = intent.getStringExtra("message")
 
-        // Display room data
+
         binding.roomName.text = roomName
         binding.status.text = status
+        binding.name.text = borrower
+        binding.role.text = role
+        binding.scheduleText.text = schedule
+        binding.message.text = Editable.Factory.getInstance().newEditable(message)
 
-        // Set the click listeners for the buttons
+
+
         binding.scheduleButton.setOnClickListener {
             showDateTimePickerDialog(roomName)
         }
@@ -128,11 +137,11 @@ class AddRoomAdmin : AppCompatActivity() {
                     val name = dataSnapshot.child("name").value?.toString() ?: "Unknown Name"
                     val role = dataSnapshot.child("role").value?.toString() ?: "Unknown Role"
 
-                    // Update UI
+                    // -----Update UI---------------
                     binding.name.text = name
                     binding.role.text = role
 
-                    // Prepare updated data
+
                     val updates = mapOf(
                         "status" to "Unavailable",
                         "borrower" to name,
@@ -141,7 +150,7 @@ class AddRoomAdmin : AppCompatActivity() {
                         "message" to "Room requested"
                     )
 
-                    // Update the specific room node in Firebase
+                    // ------update ang database-----------------
                     val roomRef = database.getReference("rooms").child(roomName ?: "Unknown Room")
                     roomRef.updateChildren(updates).addOnCompleteListener { task ->
                         if (task.isSuccessful) {

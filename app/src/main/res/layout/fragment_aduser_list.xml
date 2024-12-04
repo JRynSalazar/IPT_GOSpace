@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="User"
+        android:text="@string/user_list"
         android:textColor="@color/white"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,33 +41,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-        <ScrollView
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_margin="15dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/UserRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
 
-
-        </ScrollView>
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:backgroundTint="@android:color/transparent"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView4"
-
-        app:layout_constraintEnd_toEndOf="@+id/cardView4"
-        app:layout_constraintTop_toBottomOf="@+id/cardView4">
-
-        <ImageButton
-            android:id="@+id/adduser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_add" />
-    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

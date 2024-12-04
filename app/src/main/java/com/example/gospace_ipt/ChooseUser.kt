@@ -33,7 +33,7 @@ class ChooseUser : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+
 
         binding = ActivityChooseUser2Binding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -83,8 +83,8 @@ class ChooseUser : AppCompatActivity() {
         }
         binding.toUserLogin.setOnClickListener {
             showProgressBar()
-            val toReg = Intent(this, UserLogin::class.java)
-            startActivity(toReg)
+            val toUser = Intent(this, UserLogin::class.java)
+            startActivity(toUser)
             hideProgressBar()
         }
 //------------------------------------------------------------------------

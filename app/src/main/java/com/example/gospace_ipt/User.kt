@@ -6,6 +6,7 @@ data class User(
     val name: String = "",
     val gender: String = "",
     val role: String = "",
+    val img: String = ""
     
 )
 

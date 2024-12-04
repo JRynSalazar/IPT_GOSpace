@@ -1,11 +1,8 @@
-package com.example.ipt2_login
+package com.example.gospace_ipt
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.gospace_ipt.AdProfileFragment
-import com.example.gospace_ipt.AdUserListFragment
-import com.example.gospace_ipt.AdminRoomFragment
 
 class AdminFragmentAdaptor(activity: FragmentActivity) : FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {

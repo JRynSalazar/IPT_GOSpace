@@ -18,9 +18,9 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private fun setupProgressBar() {
-        // Initialize and configure the ProgressBar
+
         progressBar = ProgressBar(this).apply {
-            visibility = View.GONE // Set to GONE initially
+            visibility = View.GONE
             setPadding(40)
         }
 

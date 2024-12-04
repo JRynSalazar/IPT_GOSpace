@@ -1,6 +1,6 @@
 package com.example.gospace_ipt
 
-import android.content.Intent
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class RoomAdapter(
-    private val roomList: List<RoomList>,
-    private val onRoomClick: (RoomList) -> Unit
+    private val roomList: MutableList<RoomList>,
+    private val onRoomClick: (RoomList) -> Unit,
+    private val onRoomDelete: (RoomList) -> Unit
 ) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
 
     inner class RoomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val roomNumber: TextView = view.findViewById(R.id.roomNumber)
         val status: TextView = view.findViewById(R.id.status)
         val profileImg: ImageView = view.findViewById(R.id.profileImg)
+        val statusDot: ImageView = view.findViewById(R.id.imageView6)
         val trashButton: ImageButton = view.findViewById(R.id.trashButton)
 
         fun bind(room: RoomList) {
@@ -29,8 +31,19 @@ class RoomAdapter(
                 .load(R.drawable.aces_logo)
                 .into(profileImg)
 
+            val statusDrawable = if (room.status == "Available") {
+                R.drawable.green_dot
+            } else {
+                R.drawable.red_dot
+            }
+            statusDot.setImageResource(statusDrawable)
+
             itemView.setOnClickListener {
                 onRoomClick(room)
+            }
+
+            trashButton.setOnClickListener {
+                onRoomDelete(room)
             }
         }
     }
@@ -46,5 +59,14 @@ class RoomAdapter(
     }
 
     override fun getItemCount(): Int = roomList.size
+
+    fun removeItem(room: RoomList) {
+        val position = roomList.indexOf(room)
+        if (position != -1) {
+            roomList.removeAt(position)
+            notifyItemRemoved(position)
+        }
+    }
 }
+
 

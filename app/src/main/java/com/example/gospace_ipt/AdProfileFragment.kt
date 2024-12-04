@@ -20,15 +20,20 @@ import com.google.firebase.database.FirebaseDatabase
 
 class AdProfileFragment : Fragment() {
 
+
+
     private lateinit var binding: FragmentAdProfileBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var databaseRoom: DatabaseReference
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
 
         binding = FragmentAdProfileBinding.inflate(inflater, container, false)
         return binding.root
@@ -124,16 +129,23 @@ class AdProfileFragment : Fragment() {
 
     //----------------logout function---------------
     private fun logoutUser() {
-        firebaseAuth.signOut()
-        Toast.makeText(requireActivity(), "You have been logged out.", Toast.LENGTH_SHORT).show()
-        toChooseUser()
+        try {
+            firebaseAuth.signOut()
+            Toast.makeText(requireContext(), "You have been logged out.", Toast.LENGTH_SHORT).show()
+            toChooseUser()
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Error during logout: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
     }
-//---------------------after logout navigate to ChooseUser--------------
+
     private fun toChooseUser() {
-        val intent = Intent(requireActivity(), ChooseUser::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val intent = Intent(requireContext(), ChooseUser::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
         startActivity(intent)
-        requireActivity().finish()
+
+        // Ensure fragment's activity finishes to avoid leaks
+        activity?.finish()
     }
 
     private fun showProgressBar() {
