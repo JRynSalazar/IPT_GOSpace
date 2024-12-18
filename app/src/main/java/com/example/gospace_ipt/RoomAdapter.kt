@@ -40,14 +40,24 @@ class RoomAdapter(
 
             itemView.setOnClickListener {
                 onRoomClick(room)
+
             }
 
             trashButton.setOnClickListener {
                 onRoomDelete(room)
+
             }
         }
     }
-
+    /*
+    fun updateRoomStatus(room: RoomList, newStatus: String) {
+        val position = roomList.indexOf(room)
+        if (position != -1) {
+            roomList[position].status = newStatus
+            notifyItemChanged(position)
+        }
+    }
+*/
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.room_list, parent, false)
         return RoomViewHolder(view)

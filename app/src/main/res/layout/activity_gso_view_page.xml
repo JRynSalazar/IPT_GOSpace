@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,10 +9,18 @@
     tools:context=".GSOViewPage">
 
 
+
+
+
     <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/tab_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpage"
@@ -26,32 +34,53 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
         android:background="#3B1E54"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_item1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/toolbar"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="end"
+        android:layout_margin="15dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_settings"
+        android:title="Admin View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/notif"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_notif"
+        app:layout_constraintEnd_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/notif"
+        app:layout_constraintTop_toBottomOf="@+id/notif" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_item2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/newNotif"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:src="@drawable/red_dot"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/notif"
+        app:layout_constraintTop_toTopOf="@+id/notif" />
 
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_item3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            />
-
-    </com.google.android.material.tabs.TabLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

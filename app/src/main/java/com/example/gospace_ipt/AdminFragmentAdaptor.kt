@@ -11,9 +11,9 @@ class AdminFragmentAdaptor(activity: FragmentActivity) : FragmentStateAdapter(ac
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> AdminRoomFragment()
-            1 -> AdUserListFragment()
-            2 -> AdProfileFragment()
+            0 -> FragmentAdminCensus()
+            1 -> AdminRoomFragment()
+            2 -> AdUserListFragment()
             else -> throw IllegalArgumentException("Invalid position")
         }
     }

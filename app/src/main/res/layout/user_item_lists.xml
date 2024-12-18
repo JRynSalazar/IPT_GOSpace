@@ -6,6 +6,7 @@
     app:cardCornerRadius="25dp"
     app:cardElevation="8dp"
     android:layout_marginTop="10dp"
+    app:cardBackgroundColor="@color/white"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,6 +65,7 @@
             android:contentDescription="@string/trash"
             android:scaleType="fitXY"
             android:src="@drawable/trash"
+            android:visibility="gone"
             android:background="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

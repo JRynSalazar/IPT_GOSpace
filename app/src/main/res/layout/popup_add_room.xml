@@ -48,6 +48,17 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Spinner
+        android:id="@+id/roomType"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:entries="@array/room_type"
+        app:layout_constraintEnd_toEndOf="@+id/roomNumber"
+        app:layout_constraintStart_toStartOf="@+id/roomNumber"
+        app:layout_constraintTop_toBottomOf="@+id/roomNumber" />
+
+
     <Button
         android:id="@+id/addRoomBTN"
         android:layout_width="130dp"
@@ -64,14 +75,14 @@
         android:id="@+id/cancelBTN"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_marginBottom="25dp"
+        android:backgroundTint="@color/red"
+        android:layout_marginTop="15dp"
         android:text="@string/cancel"
         android:textSize="16sp"
-        android:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/roomNumber"
-        app:layout_constraintTop_toBottomOf="@+id/roomNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/roomType" />
 
 
 

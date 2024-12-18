@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".AdUserListFragment">
 
     <ImageView
@@ -34,8 +35,9 @@
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_margin="25dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="25dp"
-        app:cardElevation="8dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +57,18 @@
         </FrameLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ImageButton
+        android:id="@+id/draggableButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_add"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:layout_margin="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundTint="#000000"
     tools:context=".AdminRegister">
-
 
 
     <ImageView
@@ -23,9 +23,9 @@
         android:id="@+id/back"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:src="@drawable/back_icon1"
-        android:layout_marginTop="25dp"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/back_icon1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
@@ -33,10 +33,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="@string/register_an_account"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,14 +44,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
         android:layout_marginStart="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="8dp"
         app:cardCornerRadius="20dp"
-        >
+        app:cardElevation="8dp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -62,23 +62,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
                 android:textColorHint="@color/black"
                 app:endIconTint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/admin_email"
                 app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#0D0C0C"
                 tools:ignore="Autofill">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:hint="@string/password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,24 +88,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
                 android:textColorHint="@color/black"
                 app:endIconTint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/admin_pass"
                 app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#0D0C0C"
                 tools:ignore="Autofill">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ConPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
 
-                    android:inputType="textPassword" />
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,8 +115,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,8 +128,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
-                    android:textColor="@color/black"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -136,8 +138,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,9 +150,9 @@
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:hint="@string/name"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -158,25 +160,27 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="@string/gender"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/nameC"
                 app:layout_constraintTop_toBottomOf="@+id/nameC" />
 
             <Spinner
-            android:id="@+id/genderC"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:entries="@array/gender_options"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/nameC"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView7"
-            tools:ignore="Autofill" />
+                android:id="@+id/genderC"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:backgroundTint="#0F0E0E"
+                android:entries="@array/gender_options"
+                android:foregroundTint="#0B0B0B"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/nameC"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                tools:ignore="Autofill" />
 
 
             <TextView
@@ -184,9 +188,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/role"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/genderC" />
 

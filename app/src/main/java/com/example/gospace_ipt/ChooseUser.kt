@@ -8,19 +8,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.gospace_ipt.databinding.ActivityChooseUser2Binding
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class ChooseUser : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var binding: ActivityChooseUser2Binding
+    private lateinit var auth: FirebaseAuth
+    private val db = FirebaseFirestore.getInstance()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +37,14 @@ class ChooseUser : AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 )
 
+
+        auth = FirebaseAuth.getInstance()
+
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            fetchUserRole(currentUser.uid)
+        }
 
 
         binding = ActivityChooseUser2Binding.inflate(layoutInflater)
@@ -57,6 +69,15 @@ class ChooseUser : AppCompatActivity() {
             }
         }
 
+        FirebaseMessaging.getInstance().subscribeToTopic("notifications")
+            .addOnCompleteListener { task ->
+                var msg = "Subscribed to notifications"
+                if (!task.isSuccessful) {
+                    msg = "Subscription failed"
+                }
+                Log.d("FCM", msg)
+            }
+
 //-------------------------------------------------------------------
 
 //-----------------------ONBOARDING appearing only once-------------------
@@ -77,7 +98,7 @@ class ChooseUser : AppCompatActivity() {
 
         binding.toAdminLogin.setOnClickListener {
             showProgressBar()
-            val toReg = Intent(this, AdminSignUp::class.java)
+            val toReg = Intent(this, AdminSignIn::class.java)
             startActivity(toReg)
             hideProgressBar()
         }
@@ -89,6 +110,34 @@ class ChooseUser : AppCompatActivity() {
         }
 //------------------------------------------------------------------------
     }
+
+    private fun fetchUserRole(uid: String) {
+        db.collection("users").document(uid).get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val role = document.getString("role")
+                    navigateToRoleBasedUI(role)
+                } else {
+                }
+            }
+            .addOnFailureListener { e ->
+            }
+    }
+
+    private fun navigateToRoleBasedUI(role: String?) {
+        when (role) {
+            "Admin Root" -> startActivity(Intent(this, AdminViewpage::class.java))
+            "GSO" -> startActivity(Intent(this, GSOViewPage::class.java))
+            "Faculty", "Staff", "Student" -> startActivity(Intent(this, UserViewerPage::class.java))
+            else -> {
+            //    startActivity(Intent(this, UserViewerPage::class.java))
+               auth.signOut()
+            }
+        }
+        finish()
+    }
+
+
     private fun showProgressBar() {
         findViewById<View>(R.id.progressContainer)?.visibility = View.VISIBLE
     }

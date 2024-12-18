@@ -32,9 +32,6 @@ class AdProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-
         binding = FragmentAdProfileBinding.inflate(inflater, container, false)
         return binding.root
     }

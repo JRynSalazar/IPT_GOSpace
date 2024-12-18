@@ -4,16 +4,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class RoomFragmentAdoptor (activity: FragmentActivity) : FragmentStateAdapter(activity) {
+class RoomFragmentAdapter (activity: FragmentActivity) : FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {
-        return 3
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> AllRoomFragment()
-            1 -> AvailableFragment()
-            2 -> UnavailableFragment()
+
+            0 -> FragmentRoomPending()
+            1 -> AllRoomFragment()
+            2 -> AvailableFragment()
+            3 -> UnavailableFragment()
+
             else -> throw IllegalArgumentException("Invalid position")
         }
     }

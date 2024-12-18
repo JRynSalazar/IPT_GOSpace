@@ -1,9 +1,11 @@
 package com.example.gospace_ipt
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -28,14 +30,20 @@ class AdUserListFragment : Fragment() {
     ): View? {
         _binding = FragmentAduserListBinding.inflate(inflater, container, false)
 
-        // RecyclerView setup
+        binding.draggableButton.setOnClickListener{
+            val toAddUser = Intent(requireActivity(), AddUserAccnt::class.java)
+            startActivity(toAddUser)
+        }
+
+
+        makeButtonDraggable(binding.draggableButton)
+
         binding.UserRecyclerView.layoutManager = LinearLayoutManager(context)
         userAdapter = UserAdapter(userList) { user ->
             navigateToUserDetail(user)
         }
         binding.UserRecyclerView.adapter = userAdapter
 
-        // Firebase setup
         database = FirebaseDatabase.getInstance().reference.child("users")
         fetchUserData()
 
@@ -75,5 +83,41 @@ class AdUserListFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun makeButtonDraggable(button: View) {
+        button.setOnTouchListener(object : View.OnTouchListener {
+            var dX = 0f
+            var dY = 0f
+            var lastAction = 0
+
+            override fun onTouch(view: View, event: MotionEvent): Boolean {
+                when (event.actionMasked) {
+                    MotionEvent.ACTION_DOWN -> {
+                        dX = view.x - event.rawX
+                        dY = view.y - event.rawY
+                        lastAction = MotionEvent.ACTION_DOWN
+                    }
+                    MotionEvent.ACTION_MOVE -> {
+                        view.animate()
+                            .x(event.rawX + dX)
+                            .y(event.rawY + dY)
+                            .setDuration(0)
+                            .start()
+                        lastAction = MotionEvent.ACTION_MOVE
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        if (lastAction == MotionEvent.ACTION_DOWN) {
+                            // The button was tapped, trigger click action
+                            view.performClick()
+                        }
+                    }
+                    else -> return false
+                }
+                return true
+            }
+        })
+    }
+
 }
 

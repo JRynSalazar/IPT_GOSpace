@@ -46,8 +46,8 @@ class AddUserAccnt : AppCompatActivity() {
 
 
         binding.back.setOnClickListener {
-            val back = Intent(this, AdProfileFragment::class.java)
-            startActivity(back)
+          //  val back = Intent(this, AdUserListFragment::class.java)
+         //   startActivity(back)
             finish()
         }
 
@@ -61,6 +61,7 @@ class AddUserAccnt : AppCompatActivity() {
             val name = binding.name.text.toString()
             val gender = binding.genderC.selectedItem.toString()
             val role = binding.roleSpinner.selectedItem.toString()
+            val roomRequestState = ""
 
 
             if (email.isNotEmpty() && password.isNotEmpty() && confirmPass.isNotEmpty() && role.isNotEmpty()) {
@@ -70,7 +71,7 @@ class AddUserAccnt : AppCompatActivity() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 val userId = firebaseAuth.currentUser?.uid
-                                val user = User(email, password, name, gender, role)
+                                val user = User(email, password, name, gender, role, roomRequestState)
 
                                 // -----save sa database-----------------
                                 if (userId != null) {

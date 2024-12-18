@@ -99,28 +99,18 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
-    <Button
-        android:id="@+id/scheduleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:text="@string/set_time_schedule"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="@+id/schedtext"
-        app:layout_constraintTop_toBottomOf="@+id/role" />
+
 
     <TextView
         android:id="@+id/scheduleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/scheduled_time_none"
-        android:textSize="22sp"
         android:layout_marginTop="15dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/scheduleButton"
-        app:layout_constraintTop_toBottomOf="@+id/scheduleButton" />
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/role"
+        app:layout_constraintTop_toBottomOf="@+id/role" />
 
     <TextView
         android:id="@+id/textView13"
@@ -148,16 +138,30 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <Button
-        android:id="@+id/requestBTN"
+        android:id="@+id/accptBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/request_room"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="15dp"
+        android:text="Accept"
         android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/declineBTN"
+        />
+    <Button
+        android:id="@+id/declineBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decline"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/red"
         android:textSize="18sp"
         android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+         />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

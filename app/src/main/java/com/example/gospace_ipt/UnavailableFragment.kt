@@ -55,7 +55,7 @@ class UnavailableFragment : Fragment() {
                 roomList.clear()
                 for (roomSnapshot in snapshot.children) {
                     val room = roomSnapshot.getValue(RoomList::class.java)
-                    if (room != null && room.status != "Available") {
+                    if (room != null && room.status == "Unavailable") {
                         roomList.add(room)
                     }
                 }

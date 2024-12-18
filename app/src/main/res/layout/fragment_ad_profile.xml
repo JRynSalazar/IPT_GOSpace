@@ -24,7 +24,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="100dp"
-        android:textColor="@color/white"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -88,7 +88,7 @@
         android:layout_width="350dp"
         android:layout_height="450dp"
         android:layout_marginTop="25dp"
-        android:background="@color/white"
+        app:cardBackgroundColor="@color/white"
         app:cardElevation="8dp"
         app:cardCornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"

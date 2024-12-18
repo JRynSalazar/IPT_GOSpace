@@ -20,6 +20,7 @@ class AllRoomFragment : Fragment() {
     private var roomList: MutableList<RoomList> = mutableListOf()
     private lateinit var database: DatabaseReference
     private lateinit var userDatabase: DatabaseReference
+    private lateinit var database1: DatabaseReference
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
@@ -33,6 +34,7 @@ class AllRoomFragment : Fragment() {
 
         database = FirebaseDatabase.getInstance().reference.child("rooms")
         userDatabase = FirebaseDatabase.getInstance().reference.child("users")
+        database1 = FirebaseDatabase.getInstance().reference.child("roomManager")
 
         roomAdapter = RoomAdapter(roomList, { room ->
             navigateToRoomDetail(room)
@@ -118,6 +120,13 @@ class AllRoomFragment : Fragment() {
                                         Toast.makeText(context, "Room deleted successfully", Toast.LENGTH_SHORT).show()
                                         roomAdapter.removeItem(room)
                                     }
+                                    .addOnFailureListener {
+                                        Toast.makeText(context, "Failed to delete room", Toast.LENGTH_SHORT).show()
+                                    }
+                                database1.child(room.roomName).removeValue().addOnSuccessListener {
+                                    Toast.makeText(context, "Room deleted successfully", Toast.LENGTH_SHORT).show()
+                                    roomAdapter.removeItem(room)
+                                }
                                     .addOnFailureListener {
                                         Toast.makeText(context, "Failed to delete room", Toast.LENGTH_SHORT).show()
                                     }
